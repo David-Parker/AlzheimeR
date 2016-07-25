@@ -7,6 +7,8 @@ public class TapToPlaceParent : MonoBehaviour
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
     {
+        Debug.Log("TapToPlace - User clicked.");
+
         // On each Select gesture, toggle whether the user is in placing mode.
         placing = !placing;
 
@@ -40,13 +42,13 @@ public class TapToPlaceParent : MonoBehaviour
             {
                 // Move this object's parent object to
                 // where the raycast hit the Spatial Mapping mesh.
-                this.transform.parent.position = hitInfo.point;
+                this.transform.position = hitInfo.point;
 
                 // Rotate this object's parent object to face the user.
                 Quaternion toQuat = Camera.main.transform.localRotation;
                 toQuat.x = 0;
                 toQuat.z = 0;
-                this.transform.parent.rotation = toQuat;
+                this.transform.rotation = toQuat;
             }
         }
     }
