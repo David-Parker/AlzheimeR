@@ -29,7 +29,7 @@ namespace Assets.Scripts
             }
         }
 
-        public GameObject ActiveSelection;
+        public GameObject ActiveSelection = null;
 
         public List<InteractionSourceState> trackedHands;
     }

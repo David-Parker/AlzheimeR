@@ -2,12 +2,7 @@
 
 public class TapToPlace : MonoBehaviour
 {
-    public bool Placing;
-
-    void Start()
-    {
-        Placing = false;
-    }
+    public bool Placing = false;
 
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
