@@ -13,14 +13,14 @@ public class TapToPlace : MonoBehaviour
         // If the user is in placing mode, display the spatial mapping mesh.
         if (Placing)
         {
-            SpatialMapping.Instance.DrawVisualMeshes = true;
+            //SpatialMapping.Instance.DrawVisualMeshes = true;
             this.GetComponent<MeshRenderer>().material.color = Assets.Scripts.ReferenceStore.Instance.color;
             Assets.Scripts.ReferenceStore.Instance.ActiveSelection = this.gameObject;
         }
         // If the user is not in placing mode, hide the spatial mapping mesh.
         else
         {
-            SpatialMapping.Instance.DrawVisualMeshes = false;
+            //SpatialMapping.Instance.DrawVisualMeshes = false;
             Assets.Scripts.ReferenceStore.Instance.ActiveSelection = null;
         }
     }
