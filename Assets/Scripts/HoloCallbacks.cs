@@ -36,6 +36,20 @@ public class HoloCallbacks : MonoBehaviour
         this.transform.localPosition = originalPosition;
     }
 
+    void OnClearAll()
+    {
+        //var holoObjects = this.GetComponents<HoloObject>();
+        //foreach (var holoObject in holoObjects)
+        //{
+        //    Destroy(holoObject);
+        //}
+    }
+
+    void OnDeleteObject()
+    {
+        DestroyImmediate(GazeGestureManager.Instance.FocusedObject);
+    }
+
     // Called by SpeechManager when the user says the "Drop sphere" command
     void OnDrop()
     {
