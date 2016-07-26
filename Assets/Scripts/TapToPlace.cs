@@ -42,20 +42,33 @@ public class TapToPlace : MonoBehaviour
             var headPosition = Camera.main.transform.position;
             var gazeDirection = Camera.main.transform.forward;
 
-            RaycastHit hitInfo;
-            if (Physics.Raycast(headPosition, gazeDirection, out hitInfo,
-                30.0f))
+            RaycastHit[] hits = Physics.RaycastAll(headPosition, gazeDirection, 30.0f);
+            if (hits.Length < 1)
             {
-                // Move this object's parent object to
-                // where the raycast hit the Spatial Mapping mesh.
-                this.transform.position = hitInfo.point;
-
-                // Rotate this object's parent object to face the user.
-                Quaternion toQuat = Camera.main.transform.localRotation;
-                toQuat.x = 0;
-                toQuat.z = 0;
-                this.transform.rotation = toQuat;
+                return;
             }
+
+            RaycastHit snapToHit = hits[0];
+
+            //check the next hit past this object
+            if (snapToHit.collider.gameObject == this.gameObject)
+            {
+                if (hits.Length < 2)
+                {
+                    return;
+                }
+                snapToHit = hits[1];
+            }
+
+            // Move this object's parent object to
+            // where the raycast hit the Spatial Mapping mesh.
+            this.transform.position = snapToHit.point;
+
+            // Rotate this object's parent object to face the user.
+            Quaternion toQuat = Camera.main.transform.localRotation;
+            toQuat.x = 0;
+            toQuat.z = 0;
+            this.transform.rotation = toQuat;
         }
     }
 }

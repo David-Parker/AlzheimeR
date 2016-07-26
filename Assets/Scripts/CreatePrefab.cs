@@ -35,6 +35,6 @@ public class CreatePrefab : MonoBehaviour
         GameObject obj = (GameObject)Instantiate(prefab, this.transform.position, Quaternion.identity);
         obj.SetActive(true);
         obj.tag = "HoloObject";
-        obj.SendMessage("onSelect");
+        obj.SendMessage("OnSelect");
     }
 }
