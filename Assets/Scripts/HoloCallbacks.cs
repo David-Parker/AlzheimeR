@@ -36,6 +36,11 @@ public class HoloCallbacks : MonoBehaviour
         this.transform.localPosition = originalPosition;
     }
 
+    void OnDelete()
+    {
+        Destroy(this.gameObject);
+    }
+
     // Called by SpeechManager when the user says the "Drop sphere" command
     void OnDrop()
     {

@@ -1,0 +1,12 @@
+# Blender MTL File: 'Chair.blend'
+# Material Count: 1
+
+newmtl Material
+Ns 1000.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.321575 0.217170 0.031626
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd chairTexture.tga
