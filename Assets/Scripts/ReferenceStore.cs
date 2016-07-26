@@ -24,5 +24,7 @@ namespace Assets.Scripts
                 return instance;
             }
         }
+
+        public GameObject ActiveSelection;
     }
 }

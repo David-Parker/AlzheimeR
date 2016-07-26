@@ -1,23 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CreatePrefab : MonoBehaviour {
+public class CreatePrefab : MonoBehaviour
+{
 
     public GameObject prefab;
 
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Use this for initialization
+    void Start()
+    {
+        prefab = this.transform.GetChild(0).gameObject;
+        MeshFilter childMesh = prefab.GetComponent<MeshFilter>();
+        this.gameObject.GetComponent<MeshFilter>().mesh = childMesh.mesh;
+        
+        this.gameObject.GetComponent<Renderer>().material = prefab.GetComponent<Renderer>().material;
+
+        prefab.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnSelect()
     {
-       GameObject obj = (GameObject)Instantiate(prefab, this.transform.position - new Vector3(0.0f,this.transform.position.y*1.25f,0.0f), Quaternion.identity);
-       obj.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Assets.Scripts.ReferenceStore.Instance.color;
+        var activeSelection = Assets.Scripts.ReferenceStore.Instance.ActiveSelection;
+        if(activeSelection != null)
+        {
+            return;
+        }
+
+        GameObject obj = (GameObject)Instantiate(prefab, this.transform.position, Quaternion.identity);
+        obj.SetActive(true);
+        obj.tag = "HoloObject";
+        obj.SendMessage("onSelect");
     }
 }
