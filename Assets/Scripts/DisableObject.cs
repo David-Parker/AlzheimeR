@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestScript : MonoBehaviour {
+public class DisableObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Hello, Holohack");
-	}
+        gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {

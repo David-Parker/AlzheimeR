@@ -17,6 +17,7 @@ public class CreatePrefab : MonoBehaviour {
 
     void OnSelect()
     {
-        Instantiate(prefab, new Vector3(3, 0, 3), Quaternion.identity);
+       GameObject obj = (GameObject)Instantiate(prefab, this.transform.position - new Vector3(0.0f,this.transform.position.y*1.25f,0.0f), Quaternion.identity);
+       obj.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Assets.Scripts.ReferenceStore.Instance.color;
     }
 }
