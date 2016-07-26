@@ -15,11 +15,8 @@ public class TrashManager : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Colliding!");
-
         if (col.gameObject.tag == "HoloObject")
         {
-            Debug.Log("Deleting!");
             Destroy(col.gameObject);
         }
     }

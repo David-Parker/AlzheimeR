@@ -11,16 +11,19 @@ public class SpeechManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        keywords.Add("Reset world", () =>
+        keywords.Add("Quit", () =>
         {
-            // Call the OnReset method on every descendant object.
-            this.BroadcastMessage("OnReset");
+            Application.Quit();
         });
 
-        keywords.Add("Delete all", () =>
+        keywords.Add("Potato", () =>
         {
             // Delete all HoloObjects.
-            this.BroadcastMessage("OnDelete");
+            var holoObjects = GameObject.FindGameObjectsWithTag("HoloObject").ToList();
+            foreach (var ho in holoObjects)
+            {
+                Destroy(ho);
+            }
         });
 
         keywords.Add("Delete", () =>
