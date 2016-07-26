@@ -13,12 +13,14 @@ public class TrashManager : MonoBehaviour {
 	
 	}
 
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerEnter(Collider col)
     {
-        if (coll.gameObject.tag == "HoloObject")
+        Debug.Log("Colliding!");
+
+        if (col.gameObject.tag == "HoloObject")
         {
-            var holoObj = this.gameObject;
-            Destroy(holoObj);
+            Debug.Log("Deleting!");
+            Destroy(col.gameObject);
         }
     }
 }
