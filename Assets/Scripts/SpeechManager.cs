@@ -17,19 +17,19 @@ public class SpeechManager : MonoBehaviour
             this.BroadcastMessage("OnReset");
         });
 
-        keywords.Add("Clear all", () =>
+        keywords.Add("Delete all", () =>
         {
             // Delete all HoloObjects.
-            this.BroadcastMessage("OnClearAll");
+            this.BroadcastMessage("OnDelete");
         });
 
-        keywords.Add("Delete Object", () =>
+        keywords.Add("Delete", () =>
         {
             // Delete the focused object.
             var focusObject = GazeGestureManager.Instance.FocusedObject;
             if (focusObject != null)
             {
-                focusObject.SendMessage("OnDeleteObject");
+                focusObject.SendMessage("OnDelete");
             }
         });
 
