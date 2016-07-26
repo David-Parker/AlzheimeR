@@ -7,7 +7,6 @@ public class StateManager : MonoBehaviour {
 
     public SceneState State = SceneState.Setup;
    
-    public List<SceneState> list;
 
 	// Use this for initialization
 	void Start () {
