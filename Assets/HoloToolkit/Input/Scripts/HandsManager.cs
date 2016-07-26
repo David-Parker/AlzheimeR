@@ -17,10 +17,8 @@ namespace HoloToolkit.Unity
         /// </summary>
         public bool HandDetected
         {
-            get { return trackedHands.Count > 0; }
+            get { return Assets.Scripts.ReferenceStore.Instance.trackedHands.Count > 0; }
         }
-
-        private HashSet<uint> trackedHands = new HashSet<uint>();
 
         void Awake()
         {
@@ -36,7 +34,7 @@ namespace HoloToolkit.Unity
                 return;
             }
 
-            trackedHands.Add(state.source.id);
+            Assets.Scripts.ReferenceStore.Instance.trackedHands.Add(state);
         }
 
         private void InteractionManager_SourceLost(InteractionSourceState state)
@@ -47,9 +45,9 @@ namespace HoloToolkit.Unity
                 return;
             }
 
-            if (trackedHands.Contains(state.source.id))
+            if (Assets.Scripts.ReferenceStore.Instance.trackedHands.Contains(state))
             {
-                trackedHands.Remove(state.source.id);
+                Assets.Scripts.ReferenceStore.Instance.trackedHands.Remove(state);
             }
         }
 

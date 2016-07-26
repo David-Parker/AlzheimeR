@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.VR.WSA.Input;
 
 namespace Assets.Scripts
 {
@@ -11,7 +12,10 @@ namespace Assets.Scripts
         private static ReferenceStore instance;
         public Color color;
 
-        private ReferenceStore() { color = new Color(0, 0, 0); }
+        private ReferenceStore() {
+            color = new Color(0, 0, 0);
+            trackedHands = new List<InteractionSourceState>();
+        }
 
         public static ReferenceStore Instance
         {
@@ -26,5 +30,7 @@ namespace Assets.Scripts
         }
 
         public GameObject ActiveSelection;
+
+        public List<InteractionSourceState> trackedHands;
     }
 }
