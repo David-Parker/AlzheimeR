@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TapToPlaceParent : MonoBehaviour
+public class TapToPlace : MonoBehaviour
 {
     bool placing = false;
 
