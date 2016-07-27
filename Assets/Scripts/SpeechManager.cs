@@ -16,7 +16,7 @@ public class SpeechManager : MonoBehaviour
             Application.Quit();
         });
 
-        keywords.Add("Potato", () =>
+        keywords.Add("Clear All", () =>
         {
             // Delete all HoloObjects.
             var holoObjects = GameObject.FindGameObjectsWithTag("HoloObject").ToList();
@@ -44,6 +44,13 @@ public class SpeechManager : MonoBehaviour
                 // Call the OnDrop method on just the focused object.
                 focusObject.SendMessage("OnDrop");
             }
+        });
+        
+        //switch to presentation mode
+        keywords.Add("Ready", () =>
+        {
+            GameObject.Find("Setup").SetActive(false);
+            gameObject.GetComponent<GazeGestureManager>().Enabled = false;
         });
 
         // Tell the KeywordRecognizer about our keywords.

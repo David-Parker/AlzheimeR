@@ -10,6 +10,8 @@ public class GazeGestureManager : MonoBehaviour
 
     GestureRecognizer recognizer;
 
+    public bool Enabled = true;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +22,11 @@ public class GazeGestureManager : MonoBehaviour
 
         recognizer.TappedEvent += (source, tapCount, ray) =>
         {
+            if(!Enabled)
+            {
+                return;
+            }
+
             // Send an OnSelect message to the focused object and its ancestors.
             if (FocusedObject != null)
             {
